@@ -1,4 +1,4 @@
-# BingAds UET WordPress Plugin
+# Bing Ads UET WordPress Plugin
 Easily setup Bing Ads UET tag in your WordPress website. A time saver for any #ppc advertiser! This plugin will add Bing Ads UET tag to your WordPress website without you manually modifying the theme or digging into the code.
 
 ![Screenshot showing Bing Ads UET configuration page in WordPress](https://raw.githubusercontent.com/JamieChung/BingAds-UET-WordPress/master/screenshot.png)
