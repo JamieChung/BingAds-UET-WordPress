@@ -2,11 +2,11 @@
 	
 /*
 Plugin Name: Bing Ads UET
-Plugin URI: https://github.com/jamiechung/BingAds-UET-WordPress
-Description: Easily setup Bing Ads UET tag in your WordPress website.
+Plugin URI: https://github.com/JamieChung/BingAds-UET-WordPress
+Description: Easily setup Bing Ads UET tag in your WordPress website. A time saver for any #ppc advertiser!
 Version: 1.0
 Author: Jamie Chung
-Author URI: http://github.com/jamiechung
+Author URI: http://github.com/JamieChung
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 */
@@ -31,6 +31,7 @@ function bingads_uet_tag ($force = false)
 }
 
 define('BINGADS_UET_PAGE_SLUG', 'bingads-uet-configuration');
+define('BINGADS_UET_LEARN_MORE_URL', 'http://advertise.bingads.microsoft.com/en-us/uahelp-topic?querytype=keyword&query=ext53048&product=bing_ads&sku=');
 
 bingads_admin_notices();
 function bingads_admin_notices ()
@@ -44,9 +45,11 @@ function bingads_admin_notices ()
 			?>
 			
 			<div class="updated fade">
-				<p><strong>Bing Ads UET is almost ready.</strong> 
-				You must <a href="admin.php?page=bingads-uet-configuration">setup your Universal Event Tracking (UET) tag</a> for it to work. 
-				<a target="_blank" href="http://advertise.bingads.microsoft.com/en-us/uahelp-topic?querytype=keyword&query=ext53048&product=bing_ads&sku=">Learn more</a>
+				<p>
+					<strong>Bing Ads UET is almost ready.</strong> 
+					You must <a href="admin.php?page=<?php echo BINGADS_UET_PAGE_SLUG; ?>">setup your Universal Event Tracking (UET) tag</a> for it to work. 
+					<a target="_blank" href="<?php echo BINGADS_UET_LEARN_MORE_URL; ?>">Learn more</a>
+				</p>
 			</div>
 
 			<?php
@@ -62,7 +65,10 @@ function bingads_uet_configuration ()
 
 <div class="wrap">
 	<h2>Bing Ads UET Configurations</h2>
-	<p>You can track conversions and other site activity for any of your campaigns by creating goals and adding the Bing Ads Universal Event Tracking tag to your WordPress site. <a target="_blank" href="http://advertise.bingads.microsoft.com/en-us/uahelp-topic?querytype=keyword&query=ext53048&product=bing_ads&sku=">Learn more</a></p>
+	<p>
+		You can track conversions and other site activity for any of your campaigns by creating goals and adding the Bing Ads Universal Event Tracking tag to your WordPress site. 
+		<a target="_blank" href="<?php echo BINGADS_UET_LEARN_MORE_URL; ?>">Learn more</a>
+	</p>
 	<form method="post" action="options.php">
 	<?php
 		settings_fields('bingads_uet_settings');
