@@ -6,7 +6,7 @@ Plugin URI: https://github.com/JamieChung/BingAds-UET-WordPress
 Description: Easily setup Bing Ads UET tag in your WordPress website. A time saver for any #ppc advertiser!
 Version: 1.0
 Author: Jamie Chung
-Author URI: http://github.com/JamieChung
+Author URI: http://twitter.com/jamiechung
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 */
@@ -61,24 +61,25 @@ function bingads_admin_notices ()
 function bingads_uet_configuration ()
 {
 	global $bingads_uet_settings
-?>
-
-<div class="wrap">
-	<h2>Bing Ads UET Configurations</h2>
-	<p>
-		You can track conversions and other site activity for any of your campaigns by creating goals and adding the Bing Ads Universal Event Tracking tag to your WordPress site. 
-		<a target="_blank" href="<?php echo BINGADS_UET_LEARN_MORE_URL; ?>">Learn more</a>
-	</p>
-	<form method="post" action="options.php">
-	<?php
-		settings_fields('bingads_uet_settings');
-		do_settings_sections(BINGADS_UET_PAGE_SLUG);
+	
 	?>
-	<p><input type="submit" class="button button-primary" value="Save Changes" /></p>
-	</form>	
-</div>
-
-<?php	
+	
+	<div class="wrap">
+		<h2>Bing Ads UET Configurations</h2>
+		<p>
+			You can track conversions and other site activity for any of your campaigns by creating goals and adding the Bing Ads Universal Event Tracking tag to your WordPress site. 
+			<a target="_blank" href="<?php echo BINGADS_UET_LEARN_MORE_URL; ?>">Learn more</a>
+		</p>
+		<form method="post" action="options.php">
+		<?php
+			settings_fields('bingads_uet_settings');
+			do_settings_sections(BINGADS_UET_PAGE_SLUG);
+		?>
+		<p><input type="submit" class="button button-primary" value="Save Changes" /></p>
+		</form>	
+	</div>
+	
+	<?php	
 }
 
 add_action('admin_menu','add_bingads_uet_menu');
@@ -150,8 +151,8 @@ if (!function_exists('bingads_uet_settings_sanitize'))
 	function bingads_uet_settings_sanitize ($settings)
 	{
 		return array (
-			'bingads_uet_enabled' => $settings['bingads_uet_enabled'] == 'yes' ? 'yes' : '',
-			'bingads_uet_tag' => ($settings['bingads_uet_tag']) 
+			'bingads_uet_enabled' => isset($settings['bingads_uet_enabled']) && $settings['bingads_uet_enabled'] == 'yes' ? 'yes' : '',
+			'bingads_uet_tag' => isset($settings['bingads_uet_tag']) ? $settings['bingads_uet_tag'] : ''
 		);
 	}
 }
